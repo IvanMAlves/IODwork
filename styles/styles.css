@@ -1,10 +1,48 @@
 
 body {
-  background-color: rgb(255, 255, 255);
-  font-family: Arial;
-  font-size: 20px;
+  font-family: Arial, Arial, Helvetica, sans-serif;  
 }
 
+header {
+  background-color: blue;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+nav{
+  float: left;
+  width: 30%;
+  height: 300px;
+  background: gold;
+  /*padding: 20px;*/
+}
+
+nav ul{
+  list-style-type: none;
+  padding: 0;
+}
+
+article{
+  float: right;
+  width: 70%;
+  height: 300px;
+  /*padding: 20px;*/
+  background-color: whitesmoke;
+}
+
+aside{
+  clear: both;  
+}
+
+footer {
+  background-color: blue;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+/*
 h1 {
   color: black;
   text-align: center;
@@ -27,4 +65,4 @@ p {
   border: 2px outset black;
   background-color: lightblue;
   text-align: center;
-}
+}*/

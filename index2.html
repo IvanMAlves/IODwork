@@ -4,11 +4,13 @@
 <head>
     <title>page title</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script type="text/javascript" src="./validation.js"></script>
 </head>
 
 <body>
     <header>
-        <h1>Header</h1>
+        <h1 id="header">Header</h1>
     </header>
     <section>
         <nav>
@@ -18,11 +20,19 @@
             </ul>
         </nav>
         <article>
-            <h2>Artical heading</h2>
+            <h2>Article heading</h2>
             <p>Prograph...</p>
-            <a href="https://www.google.com/">More information...< /a>
+            <a href="https://www.google.com/">More information...</a>
+
+            <form onsubmit="validateForm(event)">
+                <label>Name</label>
+                <input type="text" name="name">
+                <label>Email</label>
+                <input type="text" name="Email">
+                <button>Submit</button>
+            </form>
         </article>
-        <aside>
+        <aside id="aside">
             <h2>Related</h2>
             <ul>
                 <li><a href="#">Article 1</a></li>
@@ -33,6 +43,32 @@
     <footer>
         <p>@copyright 2050 by nobody. all rights reversed</p>
     </footer>
+
 </body>
+
+<script>
+    function validateForm(event) {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.querySelector('input[name="name"]').value;
+        if (name.length < 1) {
+            alert("Invalid name");
+        }
+        const email = form.querySelector('input[name="email"]').value;
+        const emailTest = /(.+)@(.+){2,}\.(.+){2,}/;
+        
+        if (!emailTest.test(email)) {
+            alert("invalid email");
+        }
+
+        form.submit();
+    }
+
+</script>
+
+<script>
+    document.getElementById('header').innerHTML = 'Hello Javascript';
+    document.getElementById('aside').style.backgroundColor = 'green';
+</script>
 
 </html>
