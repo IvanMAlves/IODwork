@@ -1,0 +1,44 @@
+
+h1{
+  font: 40px;
+  font-weight: bold;
+  text-align: left;
+}
+.article{
+  padding: 50px;
+  margin: 50px auto;
+  border: 1px solid black;
+  border-radius: 10px;
+  background: whitesmoke;
+}
+.style-me1{
+  color: red;
+}
+#style-me2{
+  color: blue;
+}
+
+/*
+.style-me1 h1 { color: blue }
+.style-me1 h1 { color: blue }
+*/
+
+.style-me1 #style-me2{
+  color: blueviolet;
+}
+
+.class{
+  font: 20px;
+}
+
+p.style-me1{
+  color: blueviolet;
+}
+p.style-me1{
+  color: blueviolet;
+}
+.textingstyle{
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
