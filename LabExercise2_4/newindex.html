@@ -130,6 +130,38 @@
 
                 }
             }
+            /*this is for the other part of the front page*/
+            .frontContent{
+                width: 80%;
+                margin: auto;
+                text-align: center;
+                padding-top: 100px; /* this adds padding from the top of the beginning of the home page*/
+            }
+
+            h1{
+                font-size: 36px;
+                font-weight: 600;
+            }
+            p{
+                color: #000;
+                font-size: 14px;
+                font-weight: 300;
+                line-height: 22px;
+                padding: 10px;
+            }
+            .row{
+                margin-top: 5%;
+                display: flex;
+                justify-content: space-between;
+            }
+            .frontContent-col{
+                flex-basis: 30%;
+                background: #b2d5ee;
+                border-radius: 10px;
+                margin-bottom: 5%;
+                padding: 20px 12px;
+                box-sizing: border-box;
+            }
         </style>
     </head>
 <!---->
@@ -155,6 +187,26 @@
             </div>
         </section>
 
+
+        <section class="frontContent">
+            <h1>More front page content to come</h1>
+            <p>The following part from here out is for more content later on to showcase what I am able to do</p>
+            <div class = "row"> <!-- you have 1 row, then a bunch of columns below which is 3-->
+                <div class = "frontContent-col">
+                    <h3>1st h3 Tag</h3>
+                    <p>This is the text under the 1st h3 tag, this is in a p tag and is being used to fill up information</p>
+                </div>
+                <div class = "frontContent-col">
+                    <h3>1st h3 Tag</h3>
+                    <p>This is the text under the 1st h3 tag, this is in a p tag and is being used to fill up information</p>
+                </div>
+                <div class = "frontContent-col">
+                    <h3>1st h3 Tag</h3>
+                    <p>This is the text under the 1st h3 tag, this is in a p tag and is being used to fill up information</p>
+                </div>
+            </div>
+        
+        </section>
         <script>
             var navLinks = document.getElementById("navLinks");
 
