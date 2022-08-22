@@ -90,3 +90,18 @@ function highestSal() {
     display.innerText = "No users exist";  //when there are no more users.
   }
 }
+
+/*
+function highestSal() {
+  let display = document.getElementById("display);
+  let text = "";
+  let listSorted = list.sort((a,b)=>b-a)
+  for (let i = 0; i < listSorted.length; i++) {
+   while (i == 0 || listSorted[i].salary == listSorted[i-1].salary) {
+    text += listSorted[i].firstName + " " + listSorted[i].lastName + " deleted\n"
+   }
+  }
+  dusplay.innerText = text;
+ }
+ ------
+ */
