@@ -1,11 +1,26 @@
 {
   "dependencies": {
     "express": "^4.18.1",
+    "prompt-sync": "^4.2.0",
     "sentiment": "^5.0.2",
     "socket.io": "^4.5.1"
   },
   "main": "sentimentexample.js",
   "scripts": {
     "start": "node sentimentexample.js"
-  }
+  },
+  "name": "iodwork",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanMAlves/IvanMAlves.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvanMAlves/IvanMAlves/issues"
+  },
+  "homepage": "https://github.com/IvanMAlves/IvanMAlves#readme",
+  "description": ""
 }
