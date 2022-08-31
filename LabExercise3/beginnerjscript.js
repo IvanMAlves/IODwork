@@ -90,7 +90,10 @@ console.log("---------------------------");
 
 {//Question 5
 console.log("Question 5");
-console.log("Will an alert be shown?");
+if ("0"){
+  console.log("Will an alert be shown?");
+}
+
 /*
 if ("0") {
 alert( 'Hello' );
@@ -157,6 +160,7 @@ let ladder = {
 ladder.up().up().down().showStep();
 }
 console.log("---------------------------");
+{
 console.log("Question 10");
 
 function Accumulator(startingValue){
@@ -173,3 +177,4 @@ accumulator.read(); // adds the user-entered value
 console.log(accumulator.value); // shows the sum of these values
 
 console.log("---------------------------");
+}
