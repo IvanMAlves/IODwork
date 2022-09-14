@@ -160,7 +160,7 @@ let ladder = {
 ladder.up().up().down().showStep();
 }
 console.log("---------------------------");
-{
+{//Question 10
 console.log("Question 10");
 
 function Accumulator(startingValue){
