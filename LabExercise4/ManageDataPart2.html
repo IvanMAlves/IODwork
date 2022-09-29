@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+  <body>
+    <h2>News</h2>
+
+    <form>
+      <label for="fname">news title:</label><br />
+
+      <input type="text" id="newsTitle" name="newsTitle" /><br />
+
+      <label for="lname">news content:</label><br />
+
+      <input type="text" id="newsContent" name="newsContent" /><br /><br />
+
+      <button id="update">submit</button>
+
+      <div id="msg">
+        <pre></pre>
+      </div>
+    </form>
+
+    <script>
+      let news = [
+        {
+          id: 1,
+          title: "News1",
+          content: "bla",
+        },
+
+        {
+          id: 2,
+          title: "News2",
+          content: "blabla",
+        },
+
+        {
+          id: 3,
+          title: "News3",
+          content: "blablabla",
+        },
+      ];
+
+      const addNews = (ev) => {
+        //Need to implate by adding a new values from form
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("update").addEventListener("click", addNews);
+      });
+    </script>
+  </body>
+</html>

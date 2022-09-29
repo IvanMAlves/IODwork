@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Aarial, Helvetica, sans-serif;
+        background-color: #e3f2fd;
+      }
+      .card {
+        padding: 10px;
+      }
+      .card-title {
+        font-weight: 600;
+        font-size: 3em;
+        padding: 0 0 10px 0;
+      }
+      .card-description {
+        font-weight: 400;
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="card-list" class="row"></div>
+    <template id="card-template">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title"></div>
+          <div class="card-text"></div>
+        </div>
+      </div>
+    </template>
+  </body>
+  <script>
+    const data = [
+      { name: "bob", age: 23 },
+      { name: "alice", age: 39 },
+    ];
+    function addData(title, age) {
+      const template = document
+        .getElementById("card-template")
+        .content.cloneNode(true);
+      template.querySelector(".card-title").innerText = title;
+      template.querySelector(".card-text").innerText = age;
+      document.querySelector("#card-list").appendChild(template);
+    }
+    if ("content" in document.createElement("template")) {
+      for (i = 0; i < data.length; i++) {
+        addData(data[i].name, data[i].age);
+      }
+    }
+    const artist = {
+      name: "Van Gogh",
+      portfolio: [
+        {
+          title: "portrait",
+          url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/mainimage",
+        },
+        {
+          title: "sky",
+          url: "https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg",
+        },
+      ],
+    };
+    function addData2(portfolio) {
+      const template = document
+        .getElementById("card-template")
+        .content.cloneNode(true);
+      template.querySelector(".card-title").innerText = portfolio.title;
+      template.querySelector(".card-text").innerText = portfolio.url;
+      document.querySelector("#card-list").appendChild(template);
+    }
+    if ("content" in document.createElement("template")) {
+      for (i = 0; i < artist.portfolio.length; i++) {
+        let portfolio = artist.portfolio;
+        addData2(portfolio[i]);
+      }
+    }
+  </script>
+</html>

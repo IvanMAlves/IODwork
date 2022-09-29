@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+  <body>
+    <h2>News</h2>
+
+    <p id="demo"></p>
+
+    <div></div>
+
+    <script>
+      let output = document.querySelector("div");
+
+      let news = [
+        {
+          id: 1,
+          title: "News1",
+          content: "bla",
+        },
+
+        {
+          id: 2,
+          title: "News2",
+          content: "blabla",
+        },
+
+        {
+          id: 3,
+          title: "News3",
+          content: "blablabla",
+        },
+      ];
+
+      let timer = null;
+
+      let index = 0;
+
+      function printNews() {
+        //need to modify
+      }
+
+      timer = setInterval(printNews, 5000);
+    </script>
+  </body>
+</html>
