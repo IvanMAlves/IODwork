@@ -1,15 +1,14 @@
 <!doctype html>
-<!--stopped video at 35:55-->
+
 <html>
 
 <head>
-    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ivan's AI bot</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin:wght@100;300;400;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" rel="stylesheet">
     <!--this is the link for the library for fontAwesome 6 which is used for X and Bars-->
     <style>
         * {
@@ -207,8 +206,8 @@
                 <ul>
                     <li><a href="./newindex.html">Home</a></li>
                     <li><a href="./content.html">Content</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </div>
             <i class="fa-solid fa-bars" onclick="showMenu()"></i>
@@ -216,27 +215,57 @@
         </nav>
 
     </section>
-    
-        <section>
-            <div class="text-box">
-                <h1>Weather AI API</h1>
-                <p>This is a Weather AI API, it requires a Latitude and Longitute to provide the weather-with-ai</p>
-                <p>
-                    latitude: <input id="lat"></input>
-                    longitude: <input id="lng"></input>
-                </p>
-                <a href="" class="example-btn" onclick="test()">Show Weater</a>
 
-                <div id="resultsDiv">
-                    <p id="resultsP"></p>
-                </div>
+    <section>
+        <div class="text-box">
+            <h1>Weather AI API</h1>
+            <p>This is a Weather AI API, it requires a Latitude and Longitute to provide the weather-with-ai</p>
+            <p>
+                <!--
+                latitude: <input id="lat"/>
+                longitude: <input id="lng"/>
+                -->
+                <select id="citySelect"></select>
+
+
+
+            </p>
+            <a href="#" class="example-btn" onclick="test(event)">Show Weater</a>
+            <div>Location:</div>
+            <div id="resultsDiv">
+                <p id="resultsP"></p>
             </div>
-        </section>
-    
-    
-    <script>
-        var navLinks = document.getElementById("navLinks");
+            <div id="weatherDisplay">
+                <p id="weather-card"></p>
+            </div>
+        </div>
+    </section>
 
+    <section class="frontContent">
+        <h1>Example Weather Cities Selected</h1>
+        <div class="row">
+            <!-- you have 1 row, then a bunch of columns below which is 3-->
+            <div class="frontContent-col">
+                <h3 id="city"></h3>
+                <p id="resultsPcard"></p>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="cities.js"></script>
+
+    <script>
+        
+
+        const cityselect = document.getElementById('citySelect');
+        for(i=0; i < cities.length; i++){
+            cityselect.options[cityselect.options.length] = new Option(cities[i].city,cities[i].id);
+        }
+        
+
+        var navLinks = document.getElementById("navLinks");
+        
         function showMenu() {
             navLinks.style.right = "0"; //this basically changes the css to update to 0 so it will show the menu
         }
@@ -245,28 +274,39 @@
         }
 
         function show(response) {
-		let temp = (response.current.temp - 273.15).toFixed(1);
-		let city = response.city
-		document.getElementById("resultsP").innerText = "City: " + city + "\nTemp:" + temp + "C";
-		document.getElementById("resultsDiv").style.display = "inline";
-	}
-	
-	function test() {
-		const options = {
-			method: 'GET',
-			headers: {
-				'X-RapidAPI-Key': '3a62433fb4msh6022396fb0b3fdbp11987ejsn52940ae0dbac',
-				'X-RapidAPI-Host': 'weather-with-ai.p.rapidapi.com'
-			}
-		};
-		let lat = document.getElementById("lat").value;
-		let lng = document.getElementById("lng").value;
-		console.log(lat + ', ' + lng);
-		fetch("https://weather-with-ai.p.rapidapi.com/get_weather/v1?lat=" + lat + "&lng=" + lng, options)
-			.then(response => response.json())
-			.then(response => show(response))
-			.catch(err => {console.error(err)});
-	}
+            let temp = (response.current.temp - 273.15).toFixed(1);
+            let city = response.city;
+            let weather = response.current.weather; //
+            let description = weather[0].description; //this is taking the description of the first object of the array
+            let windSpeed = (response.current.wind_speed * 1.6093440).toFixed(2);
+            console.log(response);
+            document.getElementById("resultsP").innerText = "City: " + city + "\nTemp:" + temp + "C" + "\nConditions:" + description + "\nWind Speed:" + windSpeed + "km/h";
+            document.getElementById("resultsDiv").style.display = "inline";
+            document.getElementById("weatherDisplay").style.display = "inline";
+            document.getElementById("city").innerText = "City: " + city;
+            document.getElementById("resultsPcard").innerText = "\nTemp:" + temp + "C" + "\nConditions:" + description + "\nWind Speed:" + windSpeed + "km/h";
+        }
+
+        function test(e) {
+            e.preventDefault();
+            const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': 'a67f4c810cmsh53fbc876893101ep1d36b0jsn8851a48d540a',
+                    //3a62433fb4msh6022396fb0b3fdbp11987ejsn52940ae0dbac
+                    //
+                    'X-RapidAPI-Host': 'weather-with-ai.p.rapidapi.com'
+                }
+            };
+            let lat = cities[cityselect.value].lat;
+            let lng = cities[cityselect.value].long;
+            console.log(lat + ', ' + lng);
+            fetch("https://weather-with-ai.p.rapidapi.com/get_weather/v1?lat=" + lat + "&lng=" + lng, options)
+                .then(response => response.json())
+                .then(response => show(response))
+                .catch(err => { console.error(err) });
+        }
+        
     </script>
 
 </body>
