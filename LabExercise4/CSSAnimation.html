@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .square {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            animation-name: test;
+            animation-duration: 5s;
+            animation-fill-mode: forwards;
+            transition: border-radius 0.25s ease;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes test {
+            0% {
+                transform: translateY(0);
+                background-color: red;
+            }
+
+            50% {
+                transform: translateY(400px);
+                background-color: blue;
+            }
+
+            100% {
+                transform: translateY(0);
+                background-color: red;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="square"></div>
+
+</body>
+
+</html>

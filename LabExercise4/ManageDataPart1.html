@@ -1,45 +1,58 @@
 <!DOCTYPE html>
 
 <html>
-  <body>
-    <h2>News</h2>
 
-    <p id="demo"></p>
+<body>
+  <h2>News</h2>
 
-    <div></div>
+  <p id="demo"></p>
 
-    <script>
-      let output = document.querySelector("div");
+  <div></div>
 
-      let news = [
-        {
-          id: 1,
-          title: "News1",
-          content: "bla",
-        },
+  <script>
+    let output = document.querySelector("div");
 
-        {
-          id: 2,
-          title: "News2",
-          content: "blabla",
-        },
+    let news = [
+      {
+        id: 1,
+        title: "News1",
+        content: "bla",
+      },
 
-        {
-          id: 3,
-          title: "News3",
-          content: "blablabla",
-        },
-      ];
+      {
+        id: 2,
+        title: "News2",
+        content: "blabla",
+      },
 
-      let timer = null;
+      {
+        id: 3,
+        title: "News3",
+        content: "blablabla",
+      },
+    ];
 
-      let index = 0;
+    let timer = null;
 
-      function printNews() {
-        //need to modify
-      }
+    let index = 0;
 
-      timer = setInterval(printNews, 5000);
-    </script>
-  </body>
+    function printNews() {
+      output.innerHTML =
+        "News ID: " +
+        news[index].id +
+        "<br>" +
+        "News Title: " +
+        news[index].title +
+        "<br>" +
+        "News content " +
+        news[index].content +
+        "<br>" +
+        "<br>" +
+        "<br>";
+      index++;
+    }
+    timer = setInterval(printNews, 5000);
+  </script>
+</body>
+
 </html>

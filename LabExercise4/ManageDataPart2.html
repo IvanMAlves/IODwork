@@ -20,6 +20,8 @@
       </div>
     </form>
 
+    <div></div>
+
     <script>
       let news = [
         {
@@ -43,11 +45,18 @@
 
       const addNews = (ev) => {
         //Need to implate by adding a new values from form
-      };
+        const title = document.getElementById("newsTitle").value;
+        const content = document.getElementById("newsContent").value;
 
+        news.push({title: title, content: content,id: news.length +1});
+        document.querySelector("pre").textContent = JSON.stringify(news,"\t",2);
+      };
+      
       document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("update").addEventListener("click", addNews);
       });
+      
+
     </script>
   </body>
 </html>
