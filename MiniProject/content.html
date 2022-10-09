@@ -1,234 +1,58 @@
 <!doctype html>
-
 <html>
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ivan's AI bot</title>
-
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin:wght@100;300;400;600;700&display=swap"
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" rel="stylesheet">
     <!--this is the link for the library for fontAwesome 6 which is used for X and Bars-->
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            font-family: 'M PLUS Code Latin', sans-serif;
-        }
-
-        .header {
-            min-height: 100vh;
-            width: 100%;
-            background-image: linear-gradient(360deg, #f5f7fa 0%, #c3cfe2 100%);
-            background-position: center;
-            background-size: cover;
-            position: relative;
-        }
-
-        nav {
-            display: flex;
-            padding: 2% 6%;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav img {
-            width: 150px;
-        }
-
-        .nav-links {
-            flex: 1;
-            text-align: center;
-        }
-
-        /*this sets the spacing for the navigation bar text size and color*/
-        .nav-links ul li {
-            list-style: none;
-            display: inline-block;
-            padding: 8px 12px;
-            position: relative;
-        }
-
-        /*this sets the font text size and color*/
-        .nav-links ul li a {
-            color: #000;
-            text-decoration: none;
-            font-size: 20px;
-
-        }
-
-        /*this transitions from hidden to full in the next one below*/
-        .nav-links ul li::after {
-            content: '';
-            width: 0%;
-            height: 2px;
-            background-color: #65757c;
-            display: block;
-            margin: auto;
-            transition: 0.5s;
-        }
-
-        /*this is for the underline to be 100%*/
-        .nav-links ul li:hover::after {
-            width: 100%;
-        }
-
-        .text-box {
-            width: 90%;
-            color: #000;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        .text-box h1 {
-            font-size: 62px;
-        }
-
-        .text-box p {
-            margin: 10px 0 40px;
-            font-size: 20px;
-            color: #000;
-        }
-
-        .example-btn {
-            display: inline-block;
-            text-decoration: none;
-            background: transparent;
-            border: 1px solid #000;
-            padding: 12px 34px;
-            font-size: 20px;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .example-btn:hover {
-            border: 1px solid #c3cfe2;
-            background: #c3cfe2;
-            transition: 1s;
-        }
-
-        nav .fa-solid {
-            /* hides the X and Bars*/
-            display: none;
-        }
-
-        @media(max-width: 700px) {
-            .text-box h1 {
-                font-size: 20px;
-            }
-
-            .nav-links ul li {
-                display: block;
-            }
-
-            .nav-links {
-                position: absolute;
-                background: #b2d5ee;
-                height: 100vh;
-                width: 200px;
-                top: 0;
-                right: -200px;
-                text-align: left;
-                border: 1px solid #000;
-                z-index: 2;
-                transition: 1s;
-            }
-
-            nav .fa-solid {
-                display: block;
-                color: #000;
-                margin: 10px;
-                font-size: 22px;
-                cursor: pointer;
-            }
-
-            .nav-links ul {
-                padding: 30px;
-
-            }
-        }
-
-        /*this is for the other part of the front page*/
-        .frontContent {
-            width: 80%;
-            margin: auto;
-            text-align: center;
-            padding-top: 100px;
-            /* this adds padding from the top of the beginning of the home page*/
-        }
-
-        h1 {
-            font-size: 36px;
-            font-weight: 600;
-        }
-
-        p {
-            color: #000;
-            font-size: 14px;
-            font-weight: 300;
-            line-height: 22px;
-            padding: 10px;
-        }
-
-        .row {
-            margin-top: 5%;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .frontContent-col {
-            flex-basis: 30%;
-            background: #b2d5ee;
-            border-radius: 10px;
-            margin-bottom: 5%;
-            padding: 20px 12px;
-            box-sizing: border-box;
-        }
-
-        .copyright {
-            text-align: center;
-        }
-    </style>
 </head>
 <!---->
 
-<body>
-    <section class="header">
-        <nav>
-            <a href="index.html"></a>
-            <div class="nav-links" id="navLinks">
-                <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
-                <!--this is the closing icon for mobile version-->
-                <ul>
-                    <li><a href="./newindex.html">Home</a></li>
-                    <li><a href="./content.html">Content</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-            <i class="fa-solid fa-bars" onclick="showMenu()"></i>
-            <!--this is the menu icon for mobile version-->
-        </nav>
+<section class="header">
+    <nav>
+        <a href="index.html"></a>
+        <div class="nav-links" id="navLinks">
+            <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
+            <!--this is the closing icon for mobile version-->
+            <ul>
+                <li><a href="./newindex.html">Home</a></li>
+                <li><a href="./content.html">Content</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+        <!--this is the menu icon for mobile version-->
+    </nav>
 
-    </section>
+</section>
+
+
+<body>
+
+    <template id="card-template">
+        <div class="frontContent-col">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                </p>
+            </div>
+        </div>
+    </template>
 
     <section>
         <div class="text-box">
             <h1>Weather AI API</h1>
             <p>This is a Weather AI API, it requires a Latitude and Longitute to provide the weather-with-ai</p>
             <p>
-                <!--
-                latitude: <input id="lat"/>
-                longitude: <input id="lng"/>
-                -->
                 <select id="citySelect"></select>
-
-
-
             </p>
             <a href="#" class="example-btn" onclick="test(event)">Show Weater</a>
             <div>Location:</div>
@@ -241,73 +65,17 @@
         </div>
     </section>
 
+
     <section class="frontContent">
         <h1>Example Weather Cities Selected</h1>
-        <div class="row">
-            <!-- you have 1 row, then a bunch of columns below which is 3-->
-            <div class="frontContent-col">
-                <h3 id="city"></h3>
-                <p id="resultsPcard"></p>
-            </div>
-        </div>
-
+        <div id="card-list" class="row"></div>
     </section>
 
+
     <script src="cities.js"></script>
-
-    <script>
-        
-
-        const cityselect = document.getElementById('citySelect');
-        for(i=0; i < cities.length; i++){
-            cityselect.options[cityselect.options.length] = new Option(cities[i].city,cities[i].id);
-        }
-        
-
-        var navLinks = document.getElementById("navLinks");
-        
-        function showMenu() {
-            navLinks.style.right = "0"; //this basically changes the css to update to 0 so it will show the menu
-        }
-        function hideMenu() {
-            navLinks.style.right = "-200px"; //this basically changes the css to update to -200px so it will hide the menu
-        }
-
-        function show(response) {
-            let temp = (response.current.temp - 273.15).toFixed(1);
-            let city = response.city;
-            let weather = response.current.weather; //
-            let description = weather[0].description; //this is taking the description of the first object of the array
-            let windSpeed = (response.current.wind_speed * 1.6093440).toFixed(2);
-            console.log(response);
-            document.getElementById("resultsP").innerText = "City: " + city + "\nTemp:" + temp + "C" + "\nConditions:" + description + "\nWind Speed:" + windSpeed + "km/h";
-            document.getElementById("resultsDiv").style.display = "inline";
-            document.getElementById("weatherDisplay").style.display = "inline";
-            document.getElementById("city").innerText = "City: " + city;
-            document.getElementById("resultsPcard").innerText = "\nTemp:" + temp + "C" + "\nConditions:" + description + "\nWind Speed:" + windSpeed + "km/h";
-        }
-
-        function test(e) {
-            e.preventDefault();
-            const options = {
-                method: 'GET',
-                headers: {
-                    'X-RapidAPI-Key': 'a67f4c810cmsh53fbc876893101ep1d36b0jsn8851a48d540a',
-                    //3a62433fb4msh6022396fb0b3fdbp11987ejsn52940ae0dbac
-                    //
-                    'X-RapidAPI-Host': 'weather-with-ai.p.rapidapi.com'
-                }
-            };
-            let lat = cities[cityselect.value].lat;
-            let lng = cities[cityselect.value].long;
-            console.log(lat + ', ' + lng);
-            fetch("https://weather-with-ai.p.rapidapi.com/get_weather/v1?lat=" + lat + "&lng=" + lng, options)
-                .then(response => response.json())
-                .then(response => show(response))
-                .catch(err => { console.error(err) });
-        }
-        
-    </script>
+    <script src="menus.js"></script>
+    <script src="weatherAPI.js"></script>
+   
 
 </body>
 <bottom>
