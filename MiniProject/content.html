@@ -34,6 +34,7 @@
 <body>
     <template id="card-template">
         <div class="frontContent-col">
+            <a class="close-button" onclick="removeCard(this, event)" href="#">x</a>
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
 
@@ -48,11 +49,11 @@
     <section>
         <div class="text-box">
             <h1>Weather AI API</h1>
-            <p>This is a Weather AI API, it requires a Latitude and Longitute to provide the weather-with-ai</p>
+            <p>This is a Weather AI API, it requires a Latitude and Longitude to provide the weather-with-ai</p>
             <p>
                 <select id="citySelect"></select>
             </p>
-            <a href="#" class="example-btn" onclick="test(event)">Show Weater</a>
+            <a href="#" class="example-btn" onclick="test(event)">Show Weather</a>
             <div>Location:</div>
             <div id="resultsDiv">
                 <p id="resultsP"></p>
