@@ -5,11 +5,20 @@ for (i = 0; i < cities.length; i++) {
     cityselect.options[cityselect.options.length] = new Option(cities[i].city, cities[i].id);
 }
 
-function addCard(card) {
+function removeCard(button, event) {
+    event.preventDefault()
+    citiesSelectedlist.splice(button.getAttribute('data-city'), 1); //removes from internal array via city index
+    document.getElementById('city'+button.getAttribute('data-city')).remove() //removes from HTML document via element id
+}
+
+function addCard(card, cityId) {
     console.log("test message start of addcard");
+
     const template = document
         .getElementById("card-template")
         .content.cloneNode(true);
+
+    template.querySelector('.frontContent-col').setAttribute('id', 'city' + cityId)
 
     let city = card.city;
     let weather = card.current.weather; //
@@ -17,11 +26,11 @@ function addCard(card) {
     let temp = (card.current.temp - 273.15).toFixed(1);
     let windSpeed = (card.current.wind_speed * 1.6093440).toFixed(2);
     template.querySelector(".card-title").innerText = "City: " + card.city;
+    template.querySelector(".close-button").setAttribute('data-city', cityId)
 
     template.querySelector(".card-text").innerText = "\nTemp:" + temp + "C" + "\nConditions:" + description + "\nWind Speed:" + windSpeed + "km/h";
 
     document.querySelector("#card-list").appendChild(template);
-    console.log(template);
     console.log(card);
 }
 
@@ -53,7 +62,7 @@ function test(e) {
             .then(response => response.json())
             .then(response => {
                 show(response);
-                addCard(response);
+                addCard(response, cityselect.value);
                 citiesSelectedlist.push(cities[cityselect.value]);
                 console.log(citiesSelectedlist);
             })
