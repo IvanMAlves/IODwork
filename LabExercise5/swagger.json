@@ -47,6 +47,52 @@
           }
         }
       },
+      "/operation/mutiply": {
+        "get": {
+          "tags": ["Multiplication service"],
+          "summary": "Add 2 numbers",
+          "parameters": [
+            {
+              "name": "number1",
+              "in": "query",
+              "description": "The first number"
+            },
+            {
+              "name": "number2",
+              "in": "query",
+              "description": "The second number"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "This service allows to mutiply two numbers by one another"
+            }
+          }
+        }
+      },
+      "/operation/divide": {
+        "get": {
+          "tags": ["Division service"],
+          "summary": "Add 2 numbers",
+          "parameters": [
+            {
+              "name": "number1",
+              "in": "query",
+              "description": "The first number"
+            },
+            {
+              "name": "number2",
+              "in": "query",
+              "description": "The second number"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "This service allows to divide two numbers by one another"
+            }
+          }
+        }
+      },
       "/operation/subtract": {
         "get": {
           "tags": ["Substraction service"],
@@ -95,6 +141,29 @@
                 "description": "Invalid input"
               }
             }
+          }
+        }
+      }
+    },
+    "/operation/getWeatherByLocation": {
+      "get": {
+        "tags": ["WeatherAI service"],
+        "summary": "Get weather based on Lat and Long",
+        "parameters": [
+          {
+            "name": "lat",
+            "in": "query",
+            "description": "Latitude"
+          },
+          {
+            "name": "long",
+            "in": "query",
+            "description": "Longitude"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "This service allows to substract two numbers together"
           }
         }
       }

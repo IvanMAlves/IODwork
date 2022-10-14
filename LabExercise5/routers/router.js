@@ -1,8 +1,10 @@
 "use strict";
 
+//const { getWeatherByLocation } = require("../controllers/weatherAPI");
+
 module.exports = (app) => {
   var calculator = require("../controllers/CalculatorController");
-
+  var weather = require("../controllers/weatherAPI");
   //Root router
   app.get("/", (req, res) => {
     res.send("Main Page");
@@ -15,6 +17,8 @@ module.exports = (app) => {
   app.route("/operation/subtract").get(calculator.subtractOperation);
   app.route("/operation/mutiply").get(calculator.multiplyOperation);
   app.route("/operation/divide").get(calculator.divideOperation);
+
+  app.route("operation/getWeatherByLocation").get(weather.getWeatherByLocation);
 
 
   // Handling 404 request from the client
