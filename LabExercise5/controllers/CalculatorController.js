@@ -1,7 +1,10 @@
 "use strict";
 
 const Calculator = require('../Models/Calculator')
-const myCalculator = new Calculator();
+const myCalculator1 = new Calculator();
+const myCalculator2 = new Calculator();
+const myCalculator3 = new Calculator();
+const myCalculator4 = new Calculator();
 
 
 exports.addOperationByTwoParams = (req, res) => {
@@ -13,7 +16,7 @@ exports.addOperationByTwoParams = (req, res) => {
     if (!number1 || !number2){
       throw Error("Missing first and second value");
     }
-    const sum = myCalculator.add(number1, number2);
+    const sum = myCalculator1.add(number1, number2);
     //let sum = number1 + number2;
     res.status(200);
     res.json({ success: true, data: sum });
@@ -49,7 +52,8 @@ exports.subtractOperation = (req, res) => {
       throw Error("Missing first and second value");
     }
 
-    let sub = number1 - number2;
+    //let sub = number1 - number2;
+    const sub = myCalculator2.subt(number1, number2);
     res.status(200);
     res.json({ success: true, data: sub });
   } 
@@ -70,7 +74,8 @@ exports.multiplyOperation = (req, res) => {
       throw Error("Missing first and second value");
     }
 
-    let mult = number1 * number2;
+    //let mult = number1 * number2;
+    const mult = myCalculator3.mult(number1, number2);
     res.status(200);
     res.json({ success: true, data: mult });
   } 
@@ -100,8 +105,8 @@ exports.divideOperation = (req, res) => {
     let div = number1 / number2;
     let remainder = number1 % number2;
  
-    var dividedResult = {division:parseInt(div),remainderResult:remainder};
-
+    //var dividedResult = {division:parseInt(div),remainderResult:remainder};
+    const dividedResult = myCalculator3.division(number1, number2);
     res.status(200);
     res.json({ success: true, data: dividedResult });
   } 
