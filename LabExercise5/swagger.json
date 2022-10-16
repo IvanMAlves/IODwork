@@ -116,54 +116,31 @@
           }
         }
       },
-      "/operation": {
-        "post": {
-          "tags": ["Substraction service"],
-          "summary": "Subtract 2 numbers",
+      "/operation/getWeatherByLocation": {
+        "get": {
+          "tags": ["WeatherAI service"],
+          "summary": "Get weather based on Lat and Long",
           "parameters": [
             {
-              "name": "number1",
+              "name": "lat",
               "in": "query",
-              "description": "The first number"
+              "description": "Latitude"
             },
             {
-              "name": "number2",
+              "name": "long",
               "in": "query",
-              "description": "The second number"
+              "description": "Longitude"
             }
           ],
           "responses": {
             "200": {
-              "description": "This service allows to substract two numbers together"
+              "description": "Return the value of the weather based on Latitude and Longitude."
             },
             "responses": {
               "405": {
                 "description": "Invalid input"
               }
             }
-          }
-        }
-      }
-    },
-    "/operation/getWeatherByLocation": {
-      "get": {
-        "tags": ["WeatherAI service"],
-        "summary": "Get weather based on Lat and Long",
-        "parameters": [
-          {
-            "name": "lat",
-            "in": "query",
-            "description": "Latitude"
-          },
-          {
-            "name": "long",
-            "in": "query",
-            "description": "Longitude"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "This service allows to substract two numbers together"
           }
         }
       }

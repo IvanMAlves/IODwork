@@ -18,7 +18,7 @@ module.exports = (app) => {
   app.route("/operation/mutiply").get(calculator.multiplyOperation);
   app.route("/operation/divide").get(calculator.divideOperation);
 
-  app.route("operation/getWeatherByLocation").get(weather.getWeatherByLocation);
+  app.route("/operation/getWeatherByLocation").get(weather.getWeatherByLocation);
 
 
   // Handling 404 request from the client
