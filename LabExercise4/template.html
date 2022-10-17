@@ -50,7 +50,7 @@
     }
     if ("content" in document.createElement("template")) {
       for (i = 0; i < data.length; i++) {
-        addData(data[i].name, data[i].age);
+        addData(data[i].name, data[i].age); //you could also pass through data[i] as a single argument and extract the properties inside the addData function
       }
     }
     const artist = {
@@ -58,7 +58,7 @@
       portfolio: [
         {
           title: "portrait",
-          url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/mainimage",
+          url: "https://media.nga.gov/iiif/54ee6643-e0f9-4b92-a1d2-441e5108724d/full/full/0/default.jpg?attachment_filename=self-portrait_1998.74.5.jpg",
         },
         {
           title: "sky",
@@ -71,7 +71,7 @@
         .getElementById("card-template")
         .content.cloneNode(true);
       template.querySelector(".card-title").innerText = portfolio.title;
-      template.querySelector(".card-text").innerText = portfolio.url;
+      template.querySelector(".card-text").innerHTML = '<img src="'+portfolio.url+'" width="500"/>' //you can use innerHTML like this to render the image, or alter the template 
       document.querySelector("#card-list").appendChild(template);
     }
     if ("content" in document.createElement("template")) {
