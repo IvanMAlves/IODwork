@@ -13,6 +13,7 @@ swaggerDocument = require('./swagger.json');
 app.use(cors())
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+app.use('/', express.static('public'))
 
 routes(app); //register the route
 

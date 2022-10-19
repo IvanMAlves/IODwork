@@ -7,7 +7,7 @@
 
   <p id="demo"></p>
 
-  <div></div>
+  <div>News articles loading ...</div>
 
   <script>
     let output = document.querySelector("div");
@@ -34,22 +34,26 @@
 
     let timer = null;
 
-    let index = 0;
+    //let index = 0;
 
-    function printNews() {
-      output.innerHTML =
-        "News ID: " +
-        news[index].id +
-        "<br>" +
-        "News Title: " +
-        news[index].title +
-        "<br>" +
-        "News content " +
-        news[index].content +
-        "<br>" +
-        "<br>" +
-        "<br>";
-      index++;
+    function printNews() { //should try and use a template for this
+      //the idea is to print all news articles each time, so in case there have been more added it will pick them up in the next run
+      output.innerHTML = ''
+      for (let index = 0; index < news.length; index++) {
+        output.innerHTML += '<div class="news">' +
+          "News ID: " +
+          news[index].id +
+          "<br>" +
+          "News Title: " +
+          news[index].title +
+          "<br>" +
+          "News content " +
+          news[index].content +
+          "<br>" +
+          "<br>" +
+          "</div>";
+      //index++;
+      }
     }
     timer = setInterval(printNews, 5000);
   </script>

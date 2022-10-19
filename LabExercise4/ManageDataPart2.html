@@ -4,7 +4,7 @@
   <body>
     <h2>News</h2>
 
-    <form>
+    <!-- form -->
       <label for="fname">news title:</label><br />
 
       <input type="text" id="newsTitle" name="newsTitle" /><br />
@@ -18,7 +18,7 @@
       <div id="msg">
         <pre></pre>
       </div>
-    </form>
+    <!-- /form -->
 
     <div></div>
 
@@ -49,8 +49,31 @@
         const content = document.getElementById("newsContent").value;
 
         news.push({title: title, content: content,id: news.length +1});
-        document.querySelector("pre").textContent = JSON.stringify(news,"\t",2);
+        //document.querySelector("pre").textContent = JSON.stringify(news,"\t",2);
       };
+
+
+      function printNews() { //should (still) try and use a template for this
+      //the idea is to print all news articles each time, so when there have been more added it will pick them up in the next run
+      let output = document.getElementById("msg");
+      output.innerHTML = ''
+      for (let index = 0; index < news.length; index++) {
+        output.innerHTML += '<div class="news">' +
+          "News ID: " +
+          news[index].id +
+          "<br>" +
+          "News Title: " +
+          news[index].title +
+          "<br>" +
+          "News content " +
+          news[index].content +
+          "<br>" +
+          "<br>" +
+          "</div>";
+      //index++;
+      }
+    }
+    timer = setInterval(printNews, 5000);      
       
       document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("update").addEventListener("click", addNews);
