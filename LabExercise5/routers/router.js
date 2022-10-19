@@ -15,7 +15,7 @@ module.exports = (app) => {
   app.route("/operation/addByList").get(calculator.addByList);
 
   app.route("/operation/subtract").get(calculator.subtractOperation);
-  app.route("/operation/mutiply").get(calculator.multiplyOperation);
+  app.route("/operation/multiply").get(calculator.multiplyOperation); //spelling caught me!
   app.route("/operation/divide").get(calculator.divideOperation);
 
   app.route("/operation/getWeatherByLocation").get(weather.getWeatherByLocation);

@@ -1,24 +1,25 @@
 "use strict";
 
 const Calculator = require('../Models/Calculator')
-const myCalculator1 = new Calculator();
-const myCalculator2 = new Calculator();
-const myCalculator3 = new Calculator();
-const myCalculator4 = new Calculator();
+const myCalculator = new Calculator(); //you only need the one instance and just run all functions from there
+//const myCalculator2 = new Calculator();
+//const myCalculator3 = new Calculator();
+//const myCalculator4 = new Calculator();
 
 
 exports.addOperationByTwoParams = (req, res) => {
   try {
-    console.log(req.query);
+    //console.log(req.query);
     const number1 = parseFloat(req.query.number1);//the key which we pass the data is at the end of req.query.number1 so its number1
     const number2 = parseFloat(req.query.number2);
 
     if (!number1 || !number2){
       throw Error("Missing first and second value");
     }
-    const sum = myCalculator1.add(number1, number2);
+    const sum = myCalculator.add(number1, number2);
     //let sum = number1 + number2;
     res.status(200);
+    console.log(sum)
     res.json({ success: true, data: sum });
   } catch (e) {
     res.status(400);
@@ -53,7 +54,7 @@ exports.subtractOperation = (req, res) => {
     }
 
     //let sub = number1 - number2;
-    const sub = myCalculator2.subt(number1, number2);
+    const sub = myCalculator.subt(number1, number2);
     res.status(200);
     res.json({ success: true, data: sub });
   } 
@@ -75,7 +76,7 @@ exports.multiplyOperation = (req, res) => {
     }
 
     //let mult = number1 * number2;
-    const mult = myCalculator3.mult(number1, number2);
+    const mult = myCalculator.mult(number1, number2);
     res.status(200);
     res.json({ success: true, data: mult });
   } 
@@ -106,7 +107,7 @@ exports.divideOperation = (req, res) => {
     let remainder = number1 % number2;
  
     //var dividedResult = {division:parseInt(div),remainderResult:remainder};
-    const dividedResult = myCalculator3.division(number1, number2);
+    const dividedResult = myCalculator.division(number1, number2);
     res.status(200);
     res.json({ success: true, data: dividedResult });
   } 
