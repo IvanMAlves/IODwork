@@ -4,6 +4,7 @@ import './App.css';
 import HelloClick from './components/clicking';
 import ClickEmoji from './components/emojis'
 import Calculators from './components/calculator';
+//import {calculate} from './components/calculator';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <ClickEmoji></ClickEmoji>
           </div>
           <div>
-          {/* <Calculators></Calculators> */}
+          <Calculators></Calculators>
           </div>
         </p>
         <p>

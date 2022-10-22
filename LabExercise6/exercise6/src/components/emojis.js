@@ -1,5 +1,6 @@
 import Emoji from "react-emoji-render";
 import React, { useState } from "react";
+//https://www.npmjs.com/package/react-emoji-render - emojis are from here
 
   const ClickEmoji = () => {
     const [emoji, setEmoji] = useState (":D");
