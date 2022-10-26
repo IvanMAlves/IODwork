@@ -20,3 +20,20 @@ const HelloClick = () => {
 };
 
 export default HelloClick;
+
+/*
+
+import React, { useState } from "react";
+
+class HelloClick extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {name: "Ivan"};
+    }
+    render() {
+        return (
+            <div><h1>Hello, {this.state.name}</h1></div>
+    }
+};
+
+*/
