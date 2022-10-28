@@ -12,6 +12,8 @@ import React, { useState } from "react";
         }else{
             setEmoji(":D");
         }
+
+        setEmoji( emoji === ":D" ? ":)" : ":D" )//just a shorter way to do the above in one line
     };
     return (
         <div>
