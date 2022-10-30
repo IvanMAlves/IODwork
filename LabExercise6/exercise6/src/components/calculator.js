@@ -4,21 +4,22 @@ import React, { useState } from "react";
 const Calculators = () => {
   const [firstNumber, setFirstNumber] = useState(0);
   const [secondNumber, setSecondNumber] = useState(0);
+  const [operator, setOperator] = useState('+');
   const [result, setResult] = useState(0);
 
   const handleChangefirst = (event) => {
-    event.preventDefault();
+    //event.preventDefault(); //don't need to do this as react is already capturing and overriding event behaviour
     setFirstNumber(event.target.value);
   };
 
   const handleChangesecond = (event) => {
-    event.preventDefault();
+    //event.preventDefault(); //don't need to do this as react is already capturing and overriding event behaviour
     setSecondNumber(event.target.value);
   };
 
   const calculate = (event) => {
     event.preventDefault();
-    switch (event.target.operators.value) {
+    switch (operator) { //best to store this in state too
       case "+":
         setResult(
            parseInt(firstNumber) + parseInt(secondNumber),
@@ -49,11 +50,11 @@ const Calculators = () => {
       <form onSubmit={calculate}>
         First Number:
         <br></br>
-        <input type="text" value={firstNumber} onChange={handleChangefirst} />
+        <input type="text" value={firstNumber} onChange={(e) => setFirstNumber(e.target.value)} /> {/* this way you don't need a separate handler function */}
         <br></br>
         Operator:
         <br></br>
-        <select name="operators" id="operators">
+        <select name="operator" id="operator" onChange={(e) => setOperator(e.target.value)}>
           <option value="+">+</option>
           <option value="-">-</option>
           <option value="*">*</option>
@@ -62,7 +63,7 @@ const Calculators = () => {
         <br></br>
         Second Number:
         <br></br>
-        <input type="text" value={secondNumber} onChange={handleChangesecond} />
+        <input type="text" value={secondNumber} onChange={(e) => setSecondNumber(e.target.value)} /> {/* this way you don't need a separate handler function */}
         <br></br>
         Result:
         <br></br>
