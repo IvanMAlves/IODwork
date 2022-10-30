@@ -5,6 +5,7 @@ import HelloClick from "./components/clicking";
 import ClickEmoji from "./components/emojis";
 import Calculators from "./components/calculator";
 import Clock from "./components/clock";
+import Mood from "./components/Mood";
 
 function App() {
   return (
@@ -17,10 +18,11 @@ function App() {
           </div>
           <div>
             <Clock />
+            <Mood></Mood>
           </div>
-          <div>
+          {/* <div>
             <ClickEmoji></ClickEmoji>
-          </div>
+          </div> */}
           <div>
             <Calculators></Calculators>
           </div>
