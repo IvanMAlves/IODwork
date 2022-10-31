@@ -1,46 +1,39 @@
-import logo from "./logo.svg";
-import "./App.css";
+//  @TODO1 - Create basic routing app
 
-import HelloClick from "./components/clicking";
-import ClickEmoji from "./components/emojis";
-import Calculators from "./components/calculator";
-import Clock from "./components/clock";
-import Mood from "./components/Mood";
+import { Grid, Button } from "@mui/material";
+import React from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { AppRoutes } from "./routes/routes";
 
-function App() {
+const App = () => {
+  const navigate = useNavigate();
+  const id = Math.floor(Math.random() * 100);
+  const operation = "sum";
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          <div>
-            <HelloClick></HelloClick>
-          </div>
-          <div>
-            <Clock />
-            <Mood></Mood>
-          </div>
-          {/* <div>
-            <ClickEmoji></ClickEmoji>
-          </div> */}
-          <div>
-            <Calculators></Calculators>
-          </div>
-        </p>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Grid container>
+        <Grid item xs>
+          <Button onClick={() => navigate("/home")}>Home</Button>
+        </Grid>
+        <Grid item xs>
+          <Button onClick={() => navigate("/posts")}>Posts</Button>
+        </Grid>
+        <Grid item xs>
+          {/* <Button onClick={() => navigate(`/posts/${id}`)}>
+            Posts with Random Id
+          </Button> */}
+          <Link to={`/posts/${id}/`}>Posts with Random Id</Link>
+        </Grid>
+        <Grid item xs>
+          <Button onClick={() => navigate("/dashboard")}>Dashboard</Button>
+        </Grid>
+        <Grid item xs>
+          <Button onClick={() => navigate("/contact-us")}>Contact Us</Button>
+        </Grid>
+      </Grid>
+      <AppRoutes />
     </div>
   );
-}
+};
 
 export default App;
