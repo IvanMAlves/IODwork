@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 const Weather = () => {
   const [weatherResults, setResults] = useState([]);
-  const axios = require("axios");
+  //const axios = require("axios");
 
   const options = {
     method: "GET",
