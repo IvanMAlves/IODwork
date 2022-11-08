@@ -49,7 +49,7 @@ const Calculators = () => {
       <form onSubmit={calculate}>
         First Number:
         <br></br>
-        <input type="text" value={firstNumber} onChange={handleChangefirst} />
+        <input type="text" value={firstNumber} onChange={handleChangefirst}  />
         <br></br>
         Operator:
         <br></br>

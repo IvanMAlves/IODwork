@@ -1,16 +1,15 @@
 import React from "react";
-import Mood from "./Mood.js"
 import Clock from "./clock.js"
 import Calculators from "./calculator.js"
-import { Grid, Button } from "@mui/material";
+import Emoji from "./Emoji.js";
 
 const Home = () => {
     return (
       <div>
         <h1>Home</h1>
-        <Clock/>
-        <Mood/>
-        <Calculators/>
+        <div><Clock/></div><br/>
+        <div><Emoji/></div><br/>
+        <div><Calculators/></div>
       </div>
     );
   };

@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { MoodProvider } from './components/moodContext';
 
 ReactDOM.render(
   <React.StrictMode>
+    <MoodProvider>
     <BrowserRouter>
       <App />
     </BrowserRouter>
+    </MoodProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
