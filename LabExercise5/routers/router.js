@@ -5,6 +5,7 @@
 module.exports = (app) => {
   var calculator = require("../controllers/CalculatorController");
   var weather = require("../controllers/weatherAPI");
+  var armies = require("../controllers/Army");
   //Root router
   app.get("/", (req, res) => {
     res.send("Main Page");
@@ -20,7 +21,7 @@ module.exports = (app) => {
 
   app.route("/operation/getWeatherByLocation").get(weather.getWeatherByLocation);
 
-
+  app.route("/game/getArmy").get(armies.getArmy);
   // Handling 404 request from the client
   app.use((req, res, next) => {
     res.status(404).send("<h1>Page not found on the server</h1>");
