@@ -1,21 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
-import {
-  Card,
-  CardContent,
-  Container,
-  Grid,
-  TextField,
-  Typography,
-  Button,
-} from "@mui/material";
+import {Card, CardContent, Container, Grid, TextField, Typography, Button,} from "@mui/material";
 import Loading from "./Loading";
 import axios from "axios";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
-import MuiAccordionSummary, {
-  AccordionSummaryProps,
-} from "@mui/material/AccordionSummary";
+import MuiAccordionSummary, { AccordionSummaryProps} from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 
 const POST_URL = "http://localhost:8000/game/getArmy";
@@ -111,11 +101,12 @@ const Posts = () => {
                       <Typography
                         sx={{ fontSize: 14 }}
                         color="text.secondary"
-                        gutterBottom>
+                        gutterBottom
+                      >
                         {childitem.name}
                       </Typography>
                       <Typography variant="h5" component="div">
-                      {childitem.size}
+                        {childitem.size}
                       </Typography>
                     </CardContent>
                   </Card>
