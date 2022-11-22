@@ -36,7 +36,7 @@ const Calculators = () => {
         break;
       case "*":
         setResult(
-          parseInt(firstNumber) / parseInt(secondNumber),
+          parseInt(firstNumber) * parseInt(secondNumber), //should be times not divide, otherwise works well!
         );
         break;
       default:

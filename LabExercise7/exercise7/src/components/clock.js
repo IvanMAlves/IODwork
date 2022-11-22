@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { MoodContext } from './moodContext';
 
 class Clock extends Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class Clock extends Component {
       time: new Date().toLocaleTimeString(),
     };
   }
+  static contextType = MoodContext //this is how you would use Context in a class component
 
   //This happens when the component mount and the setInterval function get called with a call back function updateClock()
   componentDidMount() {
@@ -28,7 +30,7 @@ class Clock extends Component {
   render() {
     return (
       <div>
-        <p> {this.state.time}</p>
+        <p> {this.state.time} {this.context.mood} </p> {/* line 12 makes this work, to grab the mood from the context and display it anywhere */}
       </div>
     );
   }
