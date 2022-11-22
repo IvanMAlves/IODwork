@@ -11,28 +11,33 @@ const Posts = () => {
   const [postContent, setPostContent] = useState('');
   const [errorMessage, setErrorMessage] = useState("");
 
-  const getPosts = useCallback(async () => {
-    try {
-      setIsLoading(true);
-      const response = await axios({
-        method: 'get',
-        url: POST_URL,
-      });
+  //const getPosts = useCallback(async () => { //i don't think useCallback is achieving any performance improvements here
+  //https://www.w3schools.com/react/react_usecallback.asp see this link for more info
+  useEffect(() => { //you could just use useEffect directly and achieve the same purpose?
+    async function getPosts() {
+      try {
+        setIsLoading(true);
+        const response = await axios({
+          method: 'get',
+          url: POST_URL,
+        });
 
-      if (response.status === 200) {
-        setTimeout(() => {
-          setPosts(response.data);
+        if (response.status === 200) {
+          setTimeout(() => {
+            setPosts(response.data);
+            setIsLoading(false);
+          }, 3000);
+        } else {
+          console.log(response);
           setIsLoading(false);
-        }, 3000);
-      } else {
-        console.log(response);
+        }
+      } catch (err) {
+        console.log(err);
         setIsLoading(false);
+        setErrorMessage("Unable to fetch post list");
       }
-    } catch (err) {
-      console.log(err);
-      setIsLoading(false);
-      setErrorMessage("Unable to fetch post list");
     }
+    getPosts();
   }, []);
 
   const handleCreatePost = async () => {
@@ -63,9 +68,9 @@ const Posts = () => {
     }
   }
 
-  useEffect(() => {
-    getPosts();
-  }, [getPosts]);
+  //useEffect(() => {
+  //  getPosts();
+  //}, [getPosts]);
 
   const renderPosts = (
     <Container>
@@ -97,7 +102,7 @@ const Posts = () => {
   return  (
     <div className="App">
       
-      {isLoading ? <Loading /> : renderPosts}
+      {isLoading ? <Loading /> : renderPosts} {/* nice and neat, i like it */}
       {errorMessage && <div className="error">{errorMessage}</div>}
     </div>
   );
