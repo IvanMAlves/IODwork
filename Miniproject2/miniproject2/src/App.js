@@ -1,26 +1,28 @@
-//  @TODO1 - Create basic routing app
-
-import { Grid, Button } from "@mui/material";
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { AppRoutes } from "./routes/routes";
-
+//import { Grid, Button } from "@mui/material";
+//import { useNavigate } from "react-router-dom";
+//import { AppRoutes } from "./routes/routes";
+import ButtonAppBar from "./components/ButtonBar";
+//import Background from "./img/Background.jpg"
 
 const App = () => {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   return (
-    <div>
-      <Grid container>
-        <Grid item xs={2}>
+    
+    <div >
+      {/* style={{ backgroundImage:`url(${Background})`,backgroundRepeat:"no-repeat",backgroundSize:"cover" }} */}
+      <ButtonAppBar></ButtonAppBar>
+      {/* <Grid container>
+        <Grid item xs={6}>
           <Button onClick={() => navigate("/home")}>Home</Button>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={6}>
           <Button onClick={() => navigate("/army")}>Armies</Button>
         </Grid>
-      </Grid>
-      <AppRoutes />
+      </Grid> */}
     </div>
+
   );
 };
 

@@ -13,10 +13,8 @@ import Loading from "./Loading";
 import axios from "axios";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
-import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
-import MuiAccordionSummary, {
-  AccordionSummaryProps,
-} from "@mui/material/AccordionSummary";
+import MuiAccordion from "@mui/material/Accordion";
+import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import "../App.css";
 
@@ -38,6 +36,7 @@ const Posts = () => {
       if (response.status === 200) {
         setTimeout(() => {
           setArmy(response.data.data);
+          setSearch("");
           setIsLoading(false);
         }, 3000);
       } else {
@@ -53,20 +52,23 @@ const Posts = () => {
 
   const searchArmy = async () => {
     try {
-      setIsLoading(true);
-      const response = await axios.get(SEARCH_URL,{name: search});
-      console.log(response);
-      // if (response.status === 200) {
-      //   setTimeout(() => {
-      //     setArmy(response.data.data);
-      //     setIsLoading(false);
-      //   }, 3000);
-      // } else {
-      //   //console.log(response);
-      //   setIsLoading(false);
-      // }
-      console.log("Search is console logging");
-      console.log(search);
+      if (search.length > 0) {
+        setIsLoading(true);
+        const response = await axios.get(SEARCH_URL, {
+          params: { name: search },
+        });
+        if (response.status === 200) {
+          setTimeout(() => {
+            setArmy([response.data.data]);
+            setSearch("");
+            setIsLoading(false);
+          }, 3000);
+        } else {
+          setIsLoading(false);
+        }
+      } else {
+        getArmy();
+      }
     } catch (err) {
       console.log(err);
       setIsLoading(false);
@@ -139,7 +141,9 @@ const Posts = () => {
           </Box>
         </Grid>
         <Grid item xs={1}>
-        <Button onClick={searchArmy} variant="outlined">Search</Button>
+          <Button onClick={searchArmy} variant="outlined">
+            Search
+          </Button>
         </Grid>
       </Grid>
       <Grid container spacing={2}>
