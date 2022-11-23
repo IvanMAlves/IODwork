@@ -1,1 +1,0 @@
-//create a card and pass the prop

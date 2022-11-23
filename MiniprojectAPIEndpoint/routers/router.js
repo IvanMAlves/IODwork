@@ -1,7 +1,5 @@
 "use strict";
 
-//const { getWeatherByLocation } = require("../controllers/weatherAPI");
-
 module.exports = (app) => {
   var armies = require("../controllers/Army");
   //Root router

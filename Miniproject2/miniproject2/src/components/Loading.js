@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 export default function Loading() {
   return (
     <Container>
-      <Grid container spacing={1}>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <Box sx={{ display: "flex" }}>
             <CircularProgress />

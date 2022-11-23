@@ -1,19 +1,32 @@
 import React, { useEffect, useState, useCallback } from "react";
-import {Card, CardContent, Container, Grid, TextField, Typography, Button,} from "@mui/material";
+import {
+  Card,
+  Box,
+  CardContent,
+  Container,
+  Grid,
+  TextField,
+  Typography,
+  Button,
+} from "@mui/material";
 import Loading from "./Loading";
 import axios from "axios";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
-import MuiAccordionSummary, { AccordionSummaryProps} from "@mui/material/AccordionSummary";
+import MuiAccordionSummary, {
+  AccordionSummaryProps,
+} from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
+import "../App.css";
 
 const POST_URL = "http://localhost:8000/game/getArmy";
+const SEARCH_URL = "http://localhost:8000/game/searchArmy";
 
 const Posts = () => {
   const [army, setArmy] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [postContent, setPostContent] = useState("");
+  const [search, setSearch] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [expanded, setExpanded] = React.useState("");
 
@@ -37,6 +50,29 @@ const Posts = () => {
       setErrorMessage("Unable to fetch post list");
     }
   }, []);
+
+  const searchArmy = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get(SEARCH_URL,{name: search});
+      console.log(response);
+      // if (response.status === 200) {
+      //   setTimeout(() => {
+      //     setArmy(response.data.data);
+      //     setIsLoading(false);
+      //   }, 3000);
+      // } else {
+      //   //console.log(response);
+      //   setIsLoading(false);
+      // }
+      console.log("Search is console logging");
+      console.log(search);
+    } catch (err) {
+      console.log(err);
+      setIsLoading(false);
+      setErrorMessage("Unable to fetch post list");
+    }
+  };
 
   useEffect(() => {
     getArmy();
@@ -85,6 +121,28 @@ const Posts = () => {
   const renderPosts = (
     <Container>
       <Grid container spacing={2}>
+        <Grid item xs={11}>
+          <Box
+            component="form"
+            sx={{
+              "& > :not(style)": { m: 1, width: "100%" },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <TextField
+              onChange={(e) => setSearch(e.target.value)}
+              id="outlined-basic"
+              label="Search"
+              variant="outlined"
+            />
+          </Box>
+        </Grid>
+        <Grid item xs={1}>
+        <Button onClick={searchArmy} variant="outlined">Search</Button>
+        </Grid>
+      </Grid>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           {army?.map((item) => (
             <Accordion onChange={handleChange("panel1")}>
@@ -95,22 +153,28 @@ const Posts = () => {
                 <Typography>{item.army}</Typography>
               </AccordionSummary>
               <AccordionDetails>
-                {item.units.map((childitem) => (
-                  <Card sx={{ minWidth: 275 }}>
-                    <CardContent>
-                      <Typography
-                        sx={{ fontSize: 14 }}
-                        color="text.secondary"
-                        gutterBottom
-                      >
-                        {childitem.name}
-                      </Typography>
-                      <Typography variant="h5" component="div">
-                        {childitem.size}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                ))}
+                <Container>
+                  <Grid container spacing={2}>
+                    {item.units.map((childitem) => (
+                      <Grid item xs={4}>
+                        <Card className="Card-Style">
+                          <CardContent>
+                            <Typography
+                              sx={{ fontSize: 14 }}
+                              color="text.secondary"
+                              gutterBottom
+                            >
+                              {childitem.name}
+                            </Typography>
+                            <Typography variant="h5" component="div">
+                              {childitem.size}
+                            </Typography>
+                          </CardContent>
+                        </Card>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Container>
               </AccordionDetails>
             </Accordion>
           ))}
