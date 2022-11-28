@@ -28,7 +28,7 @@ export default function ButtonAppBar() {
           <Button color="inherit" onClick={() => navigate("/about")}>About</Button>
           <Button color="inherit" onClick={() => navigate("/army")}>Armies</Button>
           </Typography>
-          <Button color="inherit">Login</Button>
+          {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
       <AppRoutes/>
