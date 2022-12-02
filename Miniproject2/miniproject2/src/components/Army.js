@@ -34,11 +34,11 @@ const Posts = () => {
       const response = await axios.get(POST_URL);
       console.log(response);
       if (response.status === 200) {
-        setTimeout(() => {
+        //setTimeout(() => { //why put these in timeouts? much faster without
           setArmy(response.data.data);
           setSearch("");
           setIsLoading(false);
-        }, 3000);
+        //}, 3000);
       } else {
         //console.log(response);
         setIsLoading(false);
@@ -57,12 +57,13 @@ const Posts = () => {
         const response = await axios.get(SEARCH_URL, {
           params: { name: search },
         });
+        console.log(response)
         if (response.status === 200) {
-          setTimeout(() => {
+         // setTimeout(() => { //why put these in timeouts? much faster without
             setArmy([response.data.data]);
             setSearch("");
             setIsLoading(false);
-          }, 3000);
+        //  }, 3000);
         } else {
           setIsLoading(false);
         }
